@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gaming Ore Maker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+
+<header class="main-header">
+    <h1>Gaming Ore Maker</h1>
+</header>
+
+<main id="app">
+    <section class="section">
+        <h2 class="section-title">1. Select Block</h2>
+        
+        <div class="featured-grid">
+            <button class="feat-btn" onclick="quickSelect(['diamond_ore', 'deepslate_diamond_ore'])">
+                <div class="feat-previews">
+                    <canvas id="pre-diamond_ore" width="16" height="16"></canvas>
+                    <canvas id="pre-deepslate_diamond_ore" width="16" height="16"></canvas>
+                </div>
+                <span>Diamond (Both)</span>
+            </button>
+
+            <button class="feat-btn" onclick="quickSelect(['ancient_debris_side', 'ancient_debris_top'])">
+                <div class="feat-previews">
+                    <canvas id="pre-ancient_debris_side" width="16" height="16"></canvas>
+                    <canvas id="pre-ancient_debris_top" width="16" height="16"></canvas>
+                </div>
+                <span>Ancient Debris</span>
+            </button>
+
+            <button class="feat-btn" onclick="quickSelect(['deepslate_emerald_ore'])">
+                <canvas id="pre-deepslate_emerald_ore" width="16" height="16"></canvas>
+                <span>Deepslate Emerald</span>
+            </button>
+
+            <button class="feat-btn" onclick="quickSelect(['deepslate_coal_ore'])">
+                <canvas id="pre-deepslate_coal_ore" width="16" height="16"></canvas>
+                <span>Deepslate Coal</span>
+            </button>
+
+            <button class="feat-btn" onclick="quickSelect(['obsidian'])">
+                <canvas id="pre-obsidian" width="16" height="16"></canvas>
+                <span>Obsidian</span>
+            </button>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search other blocks...">
+        </div>
+        <div id="blockList" class="block-list-dropdown">Loading blocks...</div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">2. Block Settings</h2>
+        <div id="configContainer">
+            <p class="empty-msg">No blocks added yet. Select a block to start.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">3. Pack Settings</h2>
+        <div class="config-card">
+            <div class="input-group">
+                <label>Pack Name</label>
+                <input type="text" id="packName" placeholder="Gaming Ore Pack">
+            </div>
+            <div class="input-group">
+                <label>Custom Description</label>
+                <input type="text" id="packDesc" placeholder="Enter custom message here...">
+            </div>
+            <div class="input-group">
+                <label>Pack Icon (pack_icon.png)</label>
+                <div class="icon-upload-box">
+                    <input type="file" id="iconInput" accept="image/png, image/jpeg" hidden>
+                    <button class="btn info-outline" onclick="document.getElementById('iconInput').click()">Choose Icon</button>
+                    <img id="iconPreview" class="icon-thumb" style="display:none;">
+                </div>
+            </div>
+        </div>
+        <button class="btn success download-btn" id="downloadBtn">Download .mcpack</button>
+    </section>
+</main>
+
+<div id="toast" class="toast">Added!</div>
+
+<canvas id="compCanvas" width="16" height="112" style="display:none;"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
